@@ -40,10 +40,10 @@ symfony2_php_path: /usr/bin/php
 # Define composer path if installed by another role
 # Or leave blank or undefined for downloading composer.phar just into symfony2_root
 # symfony2_composer_path:
-symfony2_composer_options: ''
+symfony2_composer_options: "--no-interaction"
 
 # php app/console options
-symfony2_console_options: ''
+symfony2_console_options: "--no-interaction"
 
 symfony2_console_commands: false
   # - "assetic:dump"
