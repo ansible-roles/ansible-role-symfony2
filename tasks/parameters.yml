@@ -1,0 +1,25 @@
+---
+
+- name: Symfony2 | parameters.yml | Remove old parameters
+  file:
+    state: absent
+    path: "{{ symfony2_shared_root }}/app/config/parameters.{{ symfony2_parameters_extension }}"
+  when: symfony2_parameters_update|default(false)
+
+- name: Symfony2 | parameters.yml | Check if exists
+  stat:
+    path: "{{ symfony2_shared_root }}/app/config/parameters.{{ symfony2_parameters_extension }}"
+  register: parameters_yml
+
+- name: Symfony2 | parameters.yml | Generate from template if not exists
+  template:
+    src: "parameters.{{ symfony2_parameters_extension }}.js2"
+    dest: "{{ symfony2_shared_root }}/app/config/parameters.{{ symfony2_parameters_extension }}"
+  when: not parameters_yml.stat.exists
+
+- name: Symfony2 | parameters.yml | Create symlink from shared directory
+  file:
+    state: link
+    force: yes
+    src: "{{ symfony2_shared_root }}/app/config/parameters.yml"
+    dest: "{{ symfony2_release_root }}/app/config/parameters.yml"

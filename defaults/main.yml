@@ -1,0 +1,82 @@
+---
+
+symfony2_environment: prod
+symfony2_release_format: "%Y%m%d_%H%M%S"
+
+# Define release version or symfony2_release_format will be used
+# symfony2_release: 1
+
+# How many releases will be saved
+# 0 - do not delete any release
+symfony2_releases: 0
+
+symfony2_name: symfony
+symfony2_domain: "{{ symfony2_name }}.com"
+symfony2_root: "/var/www/{{ symfony2_name }}"
+
+# Deploy strategies:
+# 1. Git strategy
+symfony2_deploy_strategy: git
+symfony2_branch: master
+symfony2_repo: git@github.com:symfony/symfony-standard.git
+
+# 2. Mercurial strategy
+# symfony2_deploy_strategy: mercurial
+# symfony2_branch: master
+# symfony2_repo: ...
+
+# 3. SVN strategy
+# symfony2_deploy_strategy: svn
+# symfony2_svn_revision: 1
+# symfony2_repo: ...
+
+# 4. Rsync strategy
+# symfony2_deploy_strategy: rsync
+# symfony2_local_root: /var/www/local-symfony2-application/
+symfony2_rsync_options: --exclude=.git,--exclude=vendor,--exclude=web/vendor,--exclude=app/logs,--exclude=app/cache
+
+symfony2_php_path: /usr/bin/php
+
+# Define composer path if installed by another role
+# Or leave blank or undefined for downloading composer.phar just into symfony2_root
+# symfony2_composer_path:
+symfony2_composer_options: ''
+
+# php app/console options
+symfony2_console_options: ''
+
+symfony2_console_commands: false
+  # - "assetic:dump"
+  # - "doctrine:migrations:migrate -n"
+
+# Database parameters
+symfony2_database_driver: pdo_mysql
+symfony2_database_host: "127.0.0.1"
+symfony2_database_port: "3306"
+symfony2_database_name: symfony
+symfony2_database_user: symfony
+symfony2_database_password: symfony
+
+# Parameters.yml|ini|whatever
+symfony2_parameters_update: false
+symfony2_parameters_extension: yml
+
+# Use your own path to parameters.yml.js2
+# to generate your own file
+# symfony2_parameters_path: "."
+
+# Parameters
+# For built-in parameters.yml generation with default symfony2_parameters_path
+symfony2_parameters:
+  database_driver: "{{ symfony2_database_driver }}"
+  database_host: "{{ symfony2_database_host }}"
+  database_port: "{{ symfony2_database_port }}"
+  database_name: "{{ symfony2_database_name }}"
+  database_user: "{{ symfony2_database_user }}"
+  database_password: "{{ symfony2_database_password }}"
+  mailer_transport: smtp
+  mailer_host: 127.0.0.1
+  mailer_user: null
+  mailer_password: null
+  secret: ThisIsNotASecret
+  locale: en

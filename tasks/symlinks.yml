@@ -1,0 +1,38 @@
+---
+
+- name: Remove link to old application cache/logs (they may have been copied during rsync)
+  file:
+    state: absent
+    path: "{{ item }}"
+  with_items:
+    - "{{ symfony2_release_root }}/app/logs"
+    - "{{ symfony2_release_root }}/app/cache"
+    - "{{ symfony2_release_root }}/web/uploads"
+
+- name: Symfony2 | Create app/logs symlink
+  file:
+    state: link
+    force: yes
+    src: "{{ symfony2_shared_root }}/app/logs"
+    dest: "{{ symfony2_release_root }}/app/logs"
+
+- name: Symfony2 | Create web/uploads symlink
+  file:
+    state: link
+    force: yes
+    src: "{{ symfony2_shared_root }}/web/uploads"
+    dest: "{{ symfony2_release_root }}/web/uploads"
+
+- name: Remove link to old application code
+  file:
+    state: absent
+    path: "{{ symfony2_current_root }}"
+
+- name: Create link to shiny new application code
+  file:
+    state: link
+    force: yes
+    dest: "{{ symfony2_current_root }}"
+    src: "{{ symfony2_release_root }}"
+    owner: www-data
+    group: www-data

@@ -1,0 +1,9 @@
+---
+
+- name: Symfony2 | Deploy | SVN | Get sources from the repository
+  subversion:
+    repo: "{{ symfony2_repo }}"
+    dest: "{{ symfony2_root }}/releases/{{ symfony2_release }}"
+    revision: "{{ symfony2_svn_revision }}"
+  ignore_errors: true
+  register: symfony2_deployed

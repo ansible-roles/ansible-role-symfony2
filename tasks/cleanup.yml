@@ -1,0 +1,6 @@
+---
+
+- name: Symfony2 | Remove old releases
+  shell: >
+    "ls -dr {{ symfony2_root }}/releases/* | tail -n +{{ symfony2_releases + 1 }} | xargs rm -fr"
+  when: symfony2_releases is defined and symfony2_releases > 0
