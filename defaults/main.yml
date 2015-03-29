@@ -53,9 +53,9 @@ symfony2_console_commands: false
 symfony2_database_driver: pdo_mysql
 symfony2_database_host: "127.0.0.1"
 symfony2_database_port: "3306"
-symfony2_database_name: symfony
-symfony2_database_user: symfony
-symfony2_database_password: symfony
+symfony2_database_name: "{{ symfony2_name }}"
+symfony2_database_user: "{{ symfony2_name }}"
+symfony2_database_password: "{{ symfony2_name }}"
 
 # Parameters.yml|ini|whatever
 symfony2_parameters_update: false
@@ -78,5 +78,5 @@ symfony2_parameters:
   mailer_host: 127.0.0.1
   mailer_user: null
   mailer_password: null
-  secret: ThisIsNotASecret
+  secret: "{{ symfony2_name }}"
   locale: en
