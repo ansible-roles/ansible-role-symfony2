@@ -9,9 +9,13 @@
 #     setfacl -dR -m u:"$APACHEUSER":rwX -m u:`whoami`:rwX {{ symfony2_release_root }}/app/cache {{ symfony2_shared_root }}/app/logs
 
 - name: Symfony2 | Set owner
+  become: yes
+  become_method: sudo
   shell: >
-    chown -Rf www-data:www-data {{ symfony2_root }}
+    chown -Rf www-data:www-data {{ symfony2_release_root }}
 
 - name: Symfony2 | Set logs folders permissions
+  become: yes
+  become_method: sudo
   shell: >
     chmod -Rf 0777 {{ symfony2_shared_root }}/app/logs
