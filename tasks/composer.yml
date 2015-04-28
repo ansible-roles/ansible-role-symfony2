@@ -1,22 +1,22 @@
 ---
 
-# - name: Symfony2 | Composer | Install if not present
-#   get_url:
-#     url: https://getcomposer.org/composer.phar
-#     dest: "{{ symfony2_root }}/composer.phar"
-#     mode: 0755
-#     validate_certs: no
-#   register: composer_downloaded
-#   when: "symfony2_composer_path is not defined or '' == symfony2_composer_path"
+- name: Symfony2 | Composer | Install if not present
+  get_url:
+    url: https://getcomposer.org/composer.phar
+    dest: "{{ symfony2_root }}/composer.phar"
+    mode: 0755
+    validate_certs: no
+  register: composer_downloaded
+  when: "symfony2_composer_path is not defined or '' == symfony2_composer_path"
 
-# - debug:
-#     var: composer_downloaded
+- debug:
+    var: composer_downloaded
 
-# - name: Symfony2 | Composer | Set symfony2_composer_path
-#   set_fact:
-#     symfony2_composer_path: "{{ symfony2_php_path }} {{ composer_downloaded.stdout }}"
-#   when: "composer_downloaded|success"
+- name: Symfony2 | Composer | Set symfony2_composer_path
+  set_fact:
+    symfony2_composer_path: "{{ symfony2_php_path }} {{ composer_downloaded.dest }}"
+  when: "composer_downloaded|success"
 
 - name: Symfony2 | Composer | Run install
   shell: >
-    cd {{ symfony2_release_root }} && SYMFONY_ENV={{ symfony2_environment }} {{ composer_path }} install {{ symfony2_composer_options }}
+    cd {{ symfony2_release_root }} && SYMFONY_ENV={{ symfony2_environment }} {{ symfony2_composer_path }} install {{ symfony2_composer_options }}

@@ -4,8 +4,8 @@
 - include: directories.yml
 - include: deploy.yml
 - include: parameters.yml
-- include: permissions.yml
 - include: composer.yml
 - include: console.yml
 - include: symlinks.yml
 - include: cleanup.yml
+- include: permissions.yml

@@ -34,5 +34,7 @@
     force: yes
     dest: "{{ symfony2_current_root }}"
     src: "{{ symfony2_release_root }}"
-    owner: www-data
-    group: www-data
+  notify:
+    - reload php5-fpm
+    # owner: www-data
+    # group: www-data

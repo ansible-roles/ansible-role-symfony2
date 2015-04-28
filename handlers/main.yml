@@ -1,2 +1,6 @@
 ---
 
+- name: reload php5-fpm
+  service: name=php5-fpm state=reloaded
+  become: yes
+  become_method: sudo
