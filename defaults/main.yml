@@ -18,7 +18,7 @@ symfony2_root: "/var/www/{{ symfony2_name }}"
 # 1. Git strategy
 symfony2_deploy_strategy: git
 symfony2_branch: master
-symfony2_repo: git@github.com:symfony/symfony-standard.git
+symfony2_repo: https://github.com/symfony/symfony-standard.git
 
 # 2. Mercurial strategy
 # symfony2_deploy_strategy: mercurial
