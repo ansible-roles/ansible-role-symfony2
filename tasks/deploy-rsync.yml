@@ -1,15 +1,9 @@
 ---
 
-- name: Symfony2 | Deploy | Rsync | Check if source path defined
-  fail: msg="Please enter correct symfony2_local_root to copy files from"
-  when: "symfony2_local_root is not defined"
-
-# @todo Copy hard linked previous release to speed up rsync
-
 - name: Symfony2 | Deploy | Rsync | Synchronize
   synchronize:
     src: "{{ symfony2_local_root }}"
-    dest: "{{ symfony2_root }}/releases/{{ symfony2_release }}"
+    dest: "{{ symfony2_release_root }}"
     rsync_opts: "{{ symfony2_rsync_options|default('') }}"
     times: no
     recursive: yes

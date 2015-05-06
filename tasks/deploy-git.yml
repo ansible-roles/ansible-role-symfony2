@@ -1,4 +1,5 @@
 ---
+
 - name: Symfony2 | Deploy | Git | Pull sources from the repository
   git:
     repo: "{{ symfony2_repo }}"

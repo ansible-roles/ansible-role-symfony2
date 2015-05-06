@@ -1,21 +1,21 @@
 ---
 
-- name: Symfony2 | Generate symfony2_release_root
+- name: Symfony2 | Directories | Generate 'symfony2_release_root'
   set_fact:
     symfony2_release_root: "{{ symfony2_root }}/releases/{{ symfony2_release }}"
   when: symfony2_release_root is not defined
 
-- name: Symfony2 | Generate symfony2_current_root
+- name: Symfony2 | Directories | Generate 'symfony2_current_root'
   set_fact:
     symfony2_current_root: "{{ symfony2_root }}/current"
   when: symfony2_current_root is not defined
 
-- name: Symfony2 | Generate symfony2_shared_root
+- name: Symfony2 | Directories | Generate 'symfony2_shared_root'
   set_fact:
     symfony2_shared_root: "{{ symfony2_root }}/shared"
   when: symfony2_shared_root is not defined
 
-- name: Symfony2 | Create directories
+- name: Symfony2 | Directories | Create
   file:
     state: directory
     path: "{{ item }}"

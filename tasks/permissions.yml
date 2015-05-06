@@ -2,13 +2,7 @@
 
 # @todo Make acceptable variant
 
-# - name: Symfony2 | Set cache/logs folders permissions
-#   shell: >
-#     APACHEUSER=`ps aux | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data' | grep -v root | head -1 | cut -d\  -f1` &&
-#     setfacl -R -m u:"$APACHEUSER":rwX -m u:`whoami`:rwX {{ symfony2_release_root }}/app/cache {{ symfony2_shared_root }}/app/logs &&
-#     setfacl -dR -m u:"$APACHEUSER":rwX -m u:`whoami`:rwX {{ symfony2_release_root }}/app/cache {{ symfony2_shared_root }}/app/logs
-
-- name: Symfony2 | Set owner
+- name: Symfony2 | Permissions | Apply for cache/logs
   shell: >
     chown -Rf www-data:www-data {{ symfony2_root }}
 

@@ -1,6 +1,8 @@
 ---
 
 symfony2_environment: prod
+
+# Release
 symfony2_release_format: "%Y%m%d_%H%M%S"
 
 # Define release version or symfony2_release_format will be used
@@ -61,12 +63,8 @@ symfony2_database_password: "{{ symfony2_name }}"
 symfony2_parameters_update: false
 symfony2_parameters_extension: yml
 
-# Use your own path to parameters.yml.js2
-# to generate your own file
-# symfony2_parameters_path: "."
-
 # Parameters
-# For built-in parameters.yml generation with default symfony2_parameters_path
+# For parameters.yml generation
 symfony2_parameters:
   database_driver: "{{ symfony2_database_driver }}"
   database_host: "{{ symfony2_database_host }}"
