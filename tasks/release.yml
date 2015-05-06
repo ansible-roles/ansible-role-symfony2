@@ -2,7 +2,7 @@
 
 - name: Symfony2 | Get date
   shell: >
-    "date +{{ symfony2_release_format }}"
+    date +{{ symfony2_release_format }}
   register: release_date
   when: symfony2_release is not defined
 
