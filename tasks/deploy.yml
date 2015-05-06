@@ -1,9 +1,5 @@
 ---
 
-# - name: Symfony2 | Deploy | Check if repository url defined
-#   fail: msg="Please define correct symfony2_repo"
-#   when: "'rsync' != symfony2_deploy_strategy and symfony2_repo is not defined"
-
 - include: deploy-git.yml
   when: "'git' == symfony2_deploy_strategy"
 

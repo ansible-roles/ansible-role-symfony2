@@ -20,5 +20,5 @@ Examples:
 [ ] github.com at .known_hosts
 
 Etc:
-[ ] Pre-deploy checks
+[x] Pre-deploy checks
 [ ] Maintenance mode

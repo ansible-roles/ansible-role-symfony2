@@ -1,0 +1,9 @@
+---
+
+- name: Symfony2 | Check | Is 'symfony2_local_root' defined for rsync deploy strategy
+  fail: msg="Please define correct 'symfony2_local_root' to copy files from"
+  when: "'rsync' == symfony2_deploy_strategy and symfony2_local_root is not defined"
+
+- name: Symfony2 | Check | Is SVN revision defined
+  fail: msg="Please define correct 'symfony2_svn_revision'"
+  when: "'svn' == symfony2_deploy_strategy and symfony2_svn_revision is not defined"

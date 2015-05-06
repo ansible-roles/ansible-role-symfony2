@@ -1,5 +1,6 @@
 ---
 
+- include: checks.yml
 - include: release.yml
 - include: directories.yml
 - include: deploy.yml
