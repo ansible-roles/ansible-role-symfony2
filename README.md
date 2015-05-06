@@ -45,6 +45,13 @@ Usage
     - igor_mukhin.symfony2
 ```
 
+Warning
+-------
+
+This role is under development right now. Some features not well tested, so may not work. Some minor releases may break BC until version 1 released.
+
+Please, report your use case if you got problems with this role usage.
+
 License
 -------
 
