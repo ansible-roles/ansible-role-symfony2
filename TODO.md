@@ -11,8 +11,8 @@ Rights:
 [ ] User/Group defaults
 
 Tests:
-[ ] Test playbook
-[ ] Vagrantfile
+[x] Test playbook
+[x] Vagrantfile
 
 Examples:
 [ ] Multiple sites per one playbook example
