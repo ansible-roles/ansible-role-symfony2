@@ -21,7 +21,9 @@ It make capifony-like directory structure:
 Requirements
 ------------
 
-You need to install git, php, composer before run this role.
+You need to install php and proper deploy client (git, hg, svn) before run this role. See [tests/playbook.yml](tests/playbook.yml) for example.
+
+Its strongly recommended to install external `composer` role that installed globally, support automatic updates, github token configuration to go over github's API rate limit etc. My choice is [kosssi.composer](https://galaxy.ansible.com/list#/roles/1119) role. In this case you need to specify `symfony2_composer_path` with actual path to composer. Otherwise `composer.phar` will be installed in project root directory.
 
 Installation
 ------------
