@@ -5,7 +5,6 @@
 
   vars:
     # By default there are standart symfony application will be installed
-    # symfony2_release: 1
     symfony2_releases: 3
 
   pre_tasks:
@@ -23,5 +22,4 @@
         - git
 
   roles:
-    # - { role: igor_mukhin.known }
     - { role: ../../ansible-role-symfony2 }
