@@ -1,6 +1,8 @@
 ansible-role-symfony2
 =====================
 
+[![Build Status](https://travis-ci.org/ansible-roles/ansible-role-symfony2.svg?branch=master)](https://travis-ci.org/ansible-roles/ansible-role-symfony2)
+
 Ansible role to deploy Symfony2 application.
 
 It can deploy via `rsync`, `git`, `svn` and `mercurial`, generate `parameters.yml` if needed, run `php app/console` commands you defined.
