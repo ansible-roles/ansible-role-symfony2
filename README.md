@@ -63,6 +63,12 @@ You need to use `symfony2_ownership: chmod+a` or `symfony2_ownership: setfacl`.
 
 Possible workaround for `chmod` is to use `umask` at `app/console` and `web/app.php`.
 
+
+Contributing
+------------
+
+Please, see [TODO.md](TODO.md) to get idea for contribution or implement your own things.
+
 License
 -------
 
