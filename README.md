@@ -54,6 +54,15 @@ This role is under development right now. Some features not well tested, so may 
 
 Please, report your use case if you got problems with this role usage.
 
+Known issues
+------------
+
+With `symfony2_ownership: chmod` (default value) there are not allowed to use `app/console` from bash as root. Because it may generate cache with root owner and your apache will fail wo work with site. This probably ok on production where all console operations performs via cron with `www-data` user.
+
+You need to use `symfony2_ownership: chmod+a` or `symfony2_ownership: setfacl`.
+
+Possible workaround for `chmod` is to use `umask` at `app/console` and `web/app.php`.
+
 License
 -------
 

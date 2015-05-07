@@ -25,10 +25,3 @@
     mode: "u=rwx,g=rwx,o=rwx"
     recurse: yes
   when: "'chmod' == symfony2_ownership"
-
-- name: Symfony2 | Permissions | Chmod | Apply for cache
-  file:
-    path: "{{ symfony2_release_root }}/app/cache"
-    mode: "u=rwx,g=rwx,o=rwx"
-    recurse: yes
-  when: "'chmod' == symfony2_ownership"
