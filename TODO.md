@@ -7,8 +7,8 @@ Releases:
 [ ] Remove failed releases before remove old releases (check some deploy.lock file existence that created on start and deleted on successfull deploy)
 
 Rights:
-[ ] Different rights strategies (setfacl, chmod)
-[ ] User/Group defaults
+[x] Different rights strategies (chmod+a, setfacl, chmod)
+[x] User/Group defaults
 
 Tests:
 [x] Test playbook

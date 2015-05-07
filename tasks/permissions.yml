@@ -1,11 +1,34 @@
 ---
 
-# @todo Make acceptable variant
+- name: Symfony2 | Permissions | Set owner
+  file:
+    path: "{{ symfony2_root }}"
+    owner: "{{ symfony2_owner }}"
+    group: "{{ symfony2_group }}"
+    recurse: yes
 
-- name: Symfony2 | Permissions | Apply for cache/logs
+- name: Symfony2 | Permissions | Chmod+a | Apply for cache/logs
   shell: >
-    chown -Rf www-data:www-data {{ symfony2_root }}
+    chmod +a "{{ symfony2_group }} allow delete,write,append,file_inherit,directory_inherit" {{ symfony2_release_root }}/app/cache {{ symfony2_shared_root }}/app/logs &&
+    chmod +a "{{ symfony2_owner }} allow delete,write,append,file_inherit,directory_inherit" {{ symfony2_release_root }}/app/cache {{ symfony2_shared_root }}/app/logs
+  when: "'chmod+a' == symfony2_ownership"
 
-- name: Symfony2 | Set logs folders permissions
+- name: Symfony2 | Permissions | Setfacl | Apply for cache/logs
   shell: >
-    chmod -Rf 0777 {{ symfony2_shared_root }}/app/logs
+    setfacl -R -m u:{{ symfony2_group }}:rwX -m u:{{ symfony2_owner }}:rwX {{ symfony2_release_root }}/app/cache {{ symfony2_shared_root }}/app/logs &&
+    setfacl -dR -m u:{{ symfony2_group }}:rwX -m u:{{ symfony2_owner }}:rwX {{ symfony2_release_root }}/app/cache {{ symfony2_shared_root }}/app/logs
+  when: "'setfacl' == symfony2_ownership"
+
+- name: Symfony2 | Permissions | Chmod | Apply for logs
+  file:
+    path: "{{ symfony2_shared_root }}/app/logs"
+    mode: "u=rwx,g=rwx,o=rwx"
+    recurse: yes
+  when: "'chmod' == symfony2_ownership"
+
+- name: Symfony2 | Permissions | Chmod | Apply for cache
+  file:
+    path: "{{ symfony2_release_root }}/app/cache"
+    mode: "u=rwx,g=rwx,o=rwx"
+    recurse: yes
+  when: "'chmod' == symfony2_ownership"

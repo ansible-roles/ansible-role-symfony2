@@ -1,5 +1,13 @@
 ---
 
+# Ownership
+# 1. symfony2_ownership: chmod
+# 2. symfony2_ownership: setfacl
+# 3. symfony2_ownership: chmod+a
+symfony2_ownership: chmod
+symfony2_owner: "{{ ansible_ssh_user }}"
+symfony2_group: www-data
+
 symfony2_environment: prod
 
 # Release
