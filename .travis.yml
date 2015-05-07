@@ -9,7 +9,7 @@ before_install:
  - sudo apt-get install -qq python-apt python-pycurl
 
 install:
-  - pip install ansible==1.5.0
+  - pip install ansible==1.5.3
 
 script:
   - ansible-playbook tests/playbook.yml -i tests/inventory --syntax-check --list-tasks
