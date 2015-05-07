@@ -13,6 +13,8 @@ Rights:
 Tests:
 [x] Test playbook
 [x] Vagrantfile
+[x] Travis
+[ ] Travis badge
 
 Examples:
 [ ] Multiple sites per one playbook example
