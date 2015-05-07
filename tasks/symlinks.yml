@@ -34,5 +34,3 @@
     force: yes
     dest: "{{ symfony2_current_root }}"
     src: "{{ symfony2_release_root }}"
-    owner: "{{ symfony2_owner }}"
-    group: "{{ symfony2_group }}"
