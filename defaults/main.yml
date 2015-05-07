@@ -1,10 +1,29 @@
 ---
 
-# Ownership
-# 1. symfony2_ownership: chmod
-# 2. symfony2_ownership: setfacl
-# 3. symfony2_ownership: chmod+a
-symfony2_ownership: chmod
+# Ownership strategies:
+# 0. Do nothing
+# Note that there are not allowed to use `app/console` from bash as non-`symfony2_owner` user.
+# Because it may generate cache with `symfony2_owner` owner and your apache will fail wo work
+# with site. This probably ok on production where all console operations performs via cron with
+# `symfony2_owner` user.
+#
+# For example:
+# '* * * * * www-data {{ symfony2_php_path }} {{ symfony2_current_root }}/app/console --env={{ symfony2_environment }} symfony2:console:command'
+symfony2_ownership: none
+
+# 1. Uncomments `umask` at app/console and web/app.php
+# Unavailable when `symfony2_deploy_strategy` is git, mercurial or svn
+# and `symfony2_release` is defined
+#
+# Warning: Unsupported at this time
+# symfony2_ownership: umask
+
+# 2. Use `setfacl`
+# symfony2_ownership: setfacl
+#
+# 3. Use `chmod +a`
+# symfony2_ownership: chmod+a
+
 symfony2_owner: www-data
 symfony2_group: www-data
 

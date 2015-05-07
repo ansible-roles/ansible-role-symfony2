@@ -18,10 +18,3 @@
     setfacl -R -m u:{{ symfony2_group }}:rwX -m u:{{ symfony2_owner }}:rwX {{ symfony2_release_root }}/app/cache {{ symfony2_shared_root }}/app/logs &&
     setfacl -dR -m u:{{ symfony2_group }}:rwX -m u:{{ symfony2_owner }}:rwX {{ symfony2_release_root }}/app/cache {{ symfony2_shared_root }}/app/logs
   when: "'setfacl' == symfony2_ownership"
-
-- name: Symfony2 | Permissions | Chmod | Apply for logs
-  file:
-    path: "{{ symfony2_shared_root }}/app/logs"
-    mode: "u=rwx,g=rwx,o=rwx"
-    recurse: yes
-  when: "'chmod' == symfony2_ownership"

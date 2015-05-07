@@ -7,8 +7,9 @@ Releases:
 [ ] Remove failed releases before remove old releases (check some deploy.lock file existence that created on start and deleted on successfull deploy)
 
 Rights:
-[x] Different rights strategies (chmod+a, setfacl, chmod)
+[x] Different permissions strategies (chmod+a, setfacl, none)
 [x] User/Group defaults
+[ ] Make `umask` strategy (compatible only with dynamic release number)
 
 Tests:
 [x] Test playbook
@@ -23,5 +24,5 @@ Examples:
 
 Etc:
 [x] Pre-deploy checks
-[ ] Maintenance mode
+[ ] Maintenance mode (compatible only with static release number)
 [ ] Extra shared dirs
