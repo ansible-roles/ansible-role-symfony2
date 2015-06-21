@@ -7,12 +7,12 @@
     mode: 0755
     validate_certs: no
   register: composer_downloaded
-  when: "symfony2_composer_path is not defined or '' == symfony2_composer_path"
+  when: "'' == symfony2_composer_path"
 
 - name: Symfony2 | Composer | Set symfony2_composer_path
   set_fact:
     symfony2_composer_path: "{{ symfony2_php_path }} {{ symfony2_root }}/composer.phar"
-  when: "symfony2_composer_path is not defined or '' == symfony2_composer_path"
+  when: "'' == symfony2_composer_path"
 
 - name: Symfony2 | Composer | Run install
   shell: >

@@ -67,8 +67,9 @@ symfony2_rsync_options: --exclude=.git,--exclude=vendor,--exclude=web/vendor,--e
 symfony2_php_path: /usr/bin/php
 
 # Define composer path if installed by another role
-# Or leave blank or undefined for downloading composer.phar just into symfony2_root
-# symfony2_composer_path:
+# Or leave blank for downloading composer.phar just into symfony2_root
+symfony2_composer_path: ''
+
 symfony2_composer_options: "--no-interaction"
 
 # php app/console options
