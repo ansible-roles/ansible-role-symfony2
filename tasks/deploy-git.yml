@@ -6,5 +6,6 @@
     dest: "{{ symfony2_root }}/releases/{{ symfony2_release }}"
     version: "{{ symfony2_branch }}"
     force: yes
+    key_file: "{{ symfony2_key_file }}"
   ignore_errors: true
   register: symfony2_deployed

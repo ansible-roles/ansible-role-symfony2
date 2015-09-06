@@ -48,6 +48,7 @@ symfony2_root: "/var/www/{{ symfony2_name }}"
 symfony2_deploy_strategy: git
 symfony2_branch: master
 symfony2_repo: https://github.com/symfony/symfony-standard.git
+symfony2_key_file: '~/.ssh/id_rsa'
 
 # 2. Mercurial strategy
 # symfony2_deploy_strategy: mercurial
