@@ -1,7 +1,9 @@
-ansible-role-symfony2
-=====================
+# ansible-role-symfony2
 
 [![Build Status](https://travis-ci.org/ansible-roles/ansible-role-symfony2.svg?branch=master)](https://travis-ci.org/ansible-roles/ansible-role-symfony2)
+[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-igor__mukhin.symfony2-blue.svg?style=flat)](https://galaxy.ansible.com/list#/roles/3073)
+[![Supported Platforms](http://img.shields.io/badge/platforms-ubuntu-orange.svg?style=flat)](#)
+[![Ansible Version](http://img.shields.io/badge/ansible%20version-1.5.3+-lightgray.svg?style=flat)](#)
 
 Ansible role to deploy Symfony2 application.
 
