@@ -5,14 +5,16 @@
 
   vars:
     # By default there are standart symfony application will be installed
+    symfony2_release: ''
     symfony2_releases: 3
+    symfony2_branch: v2.7.4
 
   pre_tasks:
     - name: Update the apt cache
       apt:
         update_cache: yes
 
-    - name: Install php
+    - name: Install php and git
       apt:
         pkg: "{{ item }}"
         state: present

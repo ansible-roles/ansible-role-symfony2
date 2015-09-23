@@ -1,4 +1,4 @@
-$VM_BOX = ENV.has_key?('VM_BOX') ? ENV['VM_BOX'] : 'hashicorp/precise32'
+$VM_BOX = ENV.has_key?('VM_BOX') ? ENV['VM_BOX'] : 'ubuntu/trusty64'
 
 VAGRANTFILE_API_VERSION = "2"
 
@@ -7,7 +7,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.vm.provision :ansible do |ansible|
         ansible.playbook = 'playbook.yml'
-        ansible.extra_vars = { ansible_ssh_user: 'vagrant', vagrant: true }
+        ansible.extra_vars = {
+            ansible_ssh_user: 'vagrant',
+            vagrant: true
+        }
         ansible.verbose = 'vv'
     end
 end
