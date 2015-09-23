@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.*
+
+* `symfony2_release` generates now if it empty
+
 ## 0.4.*
 
 * Added: `symfony2_repo_depth` variable to control `depth` during git pull

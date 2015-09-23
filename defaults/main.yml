@@ -13,14 +13,16 @@ symfony2_ownership: none
 
 # 1. Uncomments `umask` at app/console and web/app.php
 # Unavailable when `symfony2_deploy_strategy` is git, mercurial or svn
-# and `symfony2_release` is defined
+# and `symfony2_release` != '' (in other words works only
+# when symfony2_release == '' or `symfony2_deploy_strategy` is 'rsync')
 #
 # Warning: Unsupported at this time
+# It just reserved for future implementation
 # symfony2_ownership: umask
 
 # 2. Use `setfacl`
 # symfony2_ownership: setfacl
-#
+
 # 3. Use `chmod +a`
 # symfony2_ownership: chmod+a
 
@@ -29,16 +31,59 @@ symfony2_group: www-data
 
 symfony2_environment: prod
 
-# Release
+# When `symfony2_release` is empty,
+# next variable is used to generate
+# value for `symfony2_release`.
+#
+# This value is passed to `date` utility.
+# See http://unixhelp.ed.ac.uk/CGI/man-cgi?date
+# for more information about format.
 symfony2_release_format: "%Y%m%d_%H%M%S"
 
-# Define release version or symfony2_release_format will be used
-# symfony2_release: 1
+# Regexp to match releases
+#
+# Used to filter releases list at `cleanup.yml`.
+#
+# Tune it respectively when `symfony2_release_format`
+# changed or when you fill `symfony2_release`
+# with non-numeric value.
+symfony2_release_regexp: "[0-9\_]+"
+
+
+# Release name
+# 1. Leave blank for automatic release name generation
+#
+# Each time you run this role, new version will
+# be generated and your application will be installed
+# in new release location each time.
+#
+# So you can rollback to old release if some problems
+# with new release will be found.
+symfony2_release: ''
+
+# 2. Define your value
+# Don't forget to review `symfony2_release_regexp`
+# if you use non-numeric release names
+# symfony2_release: 123
+
 
 # How many releases will be saved
-# 0 - do not delete any release
+# 1. Do not delete any releases
 symfony2_releases: 0
 
+# 2: Delete all releases except last
+# Danger! This behavior is not recommended!
+# You can't rollback to previous release as
+# it will be deleted immediately after new
+# release succesfull deployed
+# symfony2_releases: 1
+
+# 3. Delete all releases except latest X
+# In exemple below, only latest 3 releases
+# will be saved.
+# symfony2_releases: 3
+
+# Application name
 symfony2_name: symfony
 symfony2_domain: "{{ symfony2_name }}.com"
 symfony2_root: "/var/www/{{ symfony2_name }}"
