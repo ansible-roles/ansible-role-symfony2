@@ -2,6 +2,8 @@
 
 ## 0.5.*
 
+* Fixed `symfony2_release_regexp` format
+* Only those releases will be removed who match `symfony2_release_regexp`
 * `symfony2_release` generates now if it empty
 
 ## 0.4.*
