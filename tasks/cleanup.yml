@@ -2,5 +2,5 @@
 
 - name: Symfony2 | Cleanup | Remove old releases
   shell: >
-    ls -dr {{ symfony2_root }}/releases/* | tail -n +{{ symfony2_releases + 1 }} | xargs rm -fr
-  when: symfony2_releases is defined and symfony2_releases > 0
+    ls -dr {{ symfony2_root }}/releases/* | egrep '{{ symfony2_release_regexp }}' | tail -n +{{ symfony2_releases + 1 }} | xargs rm -frv
+  when: symfony2_releases > 0
