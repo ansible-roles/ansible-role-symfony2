@@ -47,7 +47,7 @@ symfony2_release_format: "%Y%m%d_%H%M%S"
 # Tune it respectively when `symfony2_release_format`
 # changed or when you fill `symfony2_release`
 # with non-numeric value.
-symfony2_release_regexp: "[0-9\_]+"
+symfony2_release_regexp: "[0-9\_]{15}"
 
 
 # Release name
