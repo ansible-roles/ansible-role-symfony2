@@ -9,4 +9,5 @@
 - include: console.yml
 - include: symlinks.yml
 - include: cleanup.yml
+  when: symfony2_releases > 0
 - include: permissions.yml

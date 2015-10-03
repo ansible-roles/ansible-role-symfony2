@@ -1,6 +1,15 @@
 ---
 
-- name: Symfony2 | Cleanup | Remove old releases
+- set_fact:
+    _symfony2_old_releases_tail: "{{ symfony2_releases|int + 1 }}"
+
+- name: Symfony2 | Cleanup | Get old releases
   shell: >
-    ls -dr {{ symfony2_root }}/releases/* | egrep '{{ symfony2_release_regexp }}' | tail -n +{{ symfony2_releases + 1 }} | xargs rm -frv
-  when: symfony2_releases > 0
+    cd '{{ symfony2_root }}/releases/' && ls -t | egrep '{{ symfony2_release_regexp }}' | tail -n +{{ _symfony2_old_releases_tail }}
+  register: _symfony2_old_releases
+
+- name: Symfony2 | Cleanup | Remove old releases
+  file:
+    path: "{{ symfony2_root }}/releases/{{ item }}"
+    state: absent
+  with_items: _symfony2_old_releases.stdout_lines
