@@ -11,9 +11,9 @@
 
 - name: Symfony2 | Composer | Set symfony2_composer_path
   set_fact:
-    symfony2_composer_path: "{{ symfony2_php_path }} {{ symfony2_root }}/composer.phar"
+    symfony2_composer_path: "{{ symfony2_root }}/composer.phar"
   when: "'' == symfony2_composer_path"
 
 - name: Symfony2 | Composer | Run install
   shell: >
-    cd {{ symfony2_release_root }} && SYMFONY_ENV={{ symfony2_environment }} {{ symfony2_composer_path }} install {{ symfony2_composer_options }}
+    cd {{ symfony2_release_root }} && SYMFONY_ENV={{ symfony2_environment }} {{ symfony2_php_path }} {{ symfony2_php_args }} {{ symfony2_composer_path }} install {{ symfony2_composer_options }}

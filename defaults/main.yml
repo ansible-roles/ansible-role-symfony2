@@ -85,8 +85,8 @@ symfony2_releases: 0
 
 # Application name
 symfony2_name: symfony
-symfony2_domain: "{{ symfony2_name }}.com"
 symfony2_root: "/var/www/{{ symfony2_name }}"
+
 
 # Deploy strategies:
 # 1. Git strategy
@@ -111,20 +111,58 @@ symfony2_key_file: '~/.ssh/id_rsa'
 # symfony2_local_root: /var/www/local-symfony2-application/
 symfony2_rsync_options: --exclude=.git,--exclude=vendor,--exclude=web/vendor,--exclude=app/logs,--exclude=app/cache
 
+# Path to php interpreter
 symfony2_php_path: /usr/bin/php
 
-# Define composer path if installed by another role
-# Or leave blank for downloading composer.phar just into symfony2_root
+
+# When you use composer, you may need
+# increased memory_limit or max_execution_time for php.
+#
+# Good practice is to have separate php.ini for cli
+# with proper limits.
+#
+# But if you need custom limits per each role run,
+# or you need to pass any other arguments to php
+# when running composer, you may use next parameter.
+#
+# 0. No extra arguments passed to php when run composer
+# symfony2_php_args: ''
+
+# 1. Use unlimited memory
+symfony2_php_args: '-d memory_limit=-1'
+
+# 2. Unlimited memory limit and execution time
+# symfony2_php_args: '-d memory_limit=-1 -d max_execution_time=0'
+
+
+# Composer installation
+# 1. If you installing composer with another role,
+# you just need define path to composer:
+# symfony2_composer_path: '/path/to/composer.phar'
+# or
+# symfony2_composer_path: '/usr/local/bin/composer'
+
+# 2. Another way, leave blank next variable
+# for downloading composer.phar just into symfony2_root
 symfony2_composer_path: ''
 
+
 symfony2_composer_options: "--no-interaction"
+
 
 # php app/console options
 symfony2_console_options: "--no-interaction"
 
+
+# Console commands to run after installation
+# 1. No commands
 symfony2_console_commands: false
-  # - "assetic:dump"
-  # - "doctrine:migrations:migrate -n"
+
+# 2. Specified commands
+# symfony2_console_commands:
+#   - "assetic:dump"
+#   - "doctrine:migrations:migrate -n"
+
 
 # Database parameters
 symfony2_database_driver: pdo_mysql
@@ -134,12 +172,37 @@ symfony2_database_name: "{{ symfony2_name }}"
 symfony2_database_user: "{{ symfony2_name }}"
 symfony2_database_password: "{{ symfony2_name }}"
 
-# Parameters.yml|ini|whatever
+
+# Parameters file update
+# 1. Regenerate/rewrite parameters file EVEN if exists
+# symfony2_parameters_update: true
+
+# 2. Do not update parameters file if exists
 symfony2_parameters_update: false
+
+
+# Extensions for parameters file
+# 1. Yaml
 symfony2_parameters_extension: yml
 
-# Parameters
-# For parameters.yml generation
+# 2. INI
+# symfony2_parameters_extension: ini
+
+# 3. PHP
+# symfony2_parameters_extension: php
+
+
+# Shared directories
+# Relative to the project root.
+# Directories will be moved from `symfony2_release_root` to `symfony2_shared_root`.
+# Absent dirs will be created under `symfony2_shared_root`.
+# Soft links will be created from `symfony2_release_root` to `symfony2_shared_root`.
+symfony2_shared_dirs:
+  - web/uploads # current/web/uploads -> shared/web/uploads
+  - app/logs    # current/app/logs    -> shared/app/logs
+
+
+# Parameters for parameters file generation
 symfony2_parameters:
   database_driver: "{{ symfony2_database_driver }}"
   database_host: "{{ symfony2_database_host }}"

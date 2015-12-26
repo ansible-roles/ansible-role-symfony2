@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.6.0
+
+* Now you can specify you own list of
+  shared directories at `symfony2_shared_dirs`
+* Data from `symfony2_shared_dirs` will be moved
+  to shared dir from release dir during first run
+* Added `symfony2_php_args` parameter with default value `-d memory_limit=-1`
+  to prevent not enough `memory_limit` composer fails
+* Improved comments at defaults/main.yml
+* Small fixes at README.md
+
 ## 0.5.*
 
 * Fixed `symfony2_release_regexp` format

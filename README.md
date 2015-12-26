@@ -22,55 +22,51 @@ It make capifony-like directory structure:
     current
 ```
 
-Requirements
-------------
+## Requirements
 
 You need to install php and proper deploy client (git, hg, svn) before run this role. See [tests/playbook.yml](tests/playbook.yml) for example.
 
 Its strongly recommended to install external `composer` role that installed globally, support automatic updates, github token configuration to go over github's API rate limit etc. My choice is [kosssi.composer](https://galaxy.ansible.com/list#/roles/1119) role. In this case you need to specify `symfony2_composer_path` with actual path to composer. Otherwise `composer.phar` will be installed in project root directory.
 
-Installation
-------------
+## Installation
 
 ```bash
 ansible-galaxy install igor_mukhin.symfony2
 ```
 
-Usage
------
+## Usage
+
+### Minimal example
 
 ```yml
 - hosts: all
   vars:
-    symfony2_release: 1
     symfony2_name: project
-    symfony2_domain: "project.com"
     symfony2_repo: git@github.com:repo/project.git
 
   roles:
     - igor_mukhin.symfony2
 ```
 
-Warning
--------
+Will install your application to /var/www/project/releases/20150114_074000/
+(if you run that at 2015-01-14 7:40).
+
+## Warning
 
 This role is under development right now. Some features not well tested, so may not work. Some minor releases may break BC until version 1 released.
 
 Please, report your use case if you got problems with this role usage.
 
-Known issues
-------------
+## Known issues
 
 With `symfony2_ownership: none` (default value) there are not allowed to use `app/console` from bash as non-`symfony2_owner` user. Because it may generate cache with root owner and your apache will fail wo work with site. This probably ok on production where all console operations performs via cron with `www-data` (`symfony2_owner`) user.
 
 You need to use `symfony2_ownership: chmod+a` or `symfony2_ownership: setfacl`.
 
-Contributing
-------------
+## Contributing
 
 Please, see [TODO.md](TODO.md) to get idea for contribution or implement your own things.
 
-License
--------
+## License
 
 MIT

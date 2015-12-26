@@ -23,5 +23,3 @@
     - "{{ symfony2_release_root }}"
     - "{{ symfony2_shared_root }}"
     - "{{ symfony2_shared_root }}/app/config"
-    - "{{ symfony2_shared_root }}/web/uploads"
-    - "{{ symfony2_shared_root }}/app/logs"
