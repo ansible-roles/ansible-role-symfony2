@@ -2,8 +2,6 @@
 
 language: python
 python: "2.7"
-php:
-  - 5.4
 
 before_install:
  - sudo apt-get update -qq
