@@ -7,7 +7,8 @@
     # By default there are standart symfony application will be installed
     symfony2_release: ''
     symfony2_releases: 3
-    symfony2_branch: v2.7.4
+    symfony2_console_commands:
+      - cache:clear --no-warmup
 
   pre_tasks:
     - name: Update the apt cache
@@ -24,4 +25,9 @@
         - git
 
   roles:
-    - { role: ../../ansible-role-symfony2 }
+    - role: ../../ansible-role-symfony2
+      symfony2_branch: v2.7.4
+
+    - role: ../../ansible-role-symfony2
+      symfony2_console_path: bin/console
+      symfony2_branch: v3.0.0
