@@ -58,6 +58,8 @@ path to `console`:
 
 ```yaml
 symfony2_console_path: bin/console
+symfony2_logs_dir: var/logs
+symfony2_cache_dir: var/cache
 ```
 
 ## Warning

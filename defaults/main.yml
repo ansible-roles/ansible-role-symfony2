@@ -109,7 +109,7 @@ symfony2_key_file: '~/.ssh/id_rsa'
 # 4. Rsync strategy
 # symfony2_deploy_strategy: rsync
 # symfony2_local_root: /var/www/local-symfony2-application/
-symfony2_rsync_options: --exclude=.git,--exclude=vendor,--exclude=web/vendor,--exclude=app/logs,--exclude=app/cache
+symfony2_rsync_options: "--exclude=.git,--exclude=vendor,--exclude=web/vendor,--exclude={{ symfony2_logs_dir }},--exclude={{ symfony2_cache_dir }}"
 
 # Path to php interpreter
 symfony2_php_path: /usr/bin/php
@@ -196,6 +196,10 @@ symfony2_parameters_extension: yml
 # symfony2_parameters_extension: php
 
 
+# Dirs
+symfony2_logs_dir: app/logs
+symfony2_cache_dir: app/cache
+
 # Shared directories
 # Relative to the project root.
 # Directories will be moved from `symfony2_release_root` to `symfony2_shared_root`.
@@ -203,7 +207,7 @@ symfony2_parameters_extension: yml
 # Soft links will be created from `symfony2_release_root` to `symfony2_shared_root`.
 symfony2_shared_dirs:
   - web/uploads # current/web/uploads -> shared/web/uploads
-  - app/logs    # current/app/logs    -> shared/app/logs
+  - "{{ symfony2_logs_dir }}"    # current/app/logs    -> shared/app/logs
 
 
 # Parameters for parameters file generation

@@ -9,12 +9,12 @@
 
 - name: Symfony2 | Permissions | Chmod+a | Apply for cache/logs
   shell: >
-    chmod +a "{{ symfony2_group }} allow delete,write,append,file_inherit,directory_inherit" {{ symfony2_release_root }}/app/cache {{ symfony2_shared_root }}/app/logs &&
-    chmod +a "{{ symfony2_owner }} allow delete,write,append,file_inherit,directory_inherit" {{ symfony2_release_root }}/app/cache {{ symfony2_shared_root }}/app/logs
+    chmod +a "{{ symfony2_group }} allow delete,write,append,file_inherit,directory_inherit" {{ symfony2_release_root }}/{{ symfony2_cache_dir }} {{ symfony2_shared_root }}/{{ symfony2_logs_dir }} &&
+    chmod +a "{{ symfony2_owner }} allow delete,write,append,file_inherit,directory_inherit" {{ symfony2_release_root }}/{{ symfony2_cache_dir }} {{ symfony2_shared_root }}/{{ symfony2_logs_dir }}
   when: "'chmod+a' == symfony2_ownership"
 
 - name: Symfony2 | Permissions | Setfacl | Apply for cache/logs
   shell: >
-    setfacl -R -m u:{{ symfony2_group }}:rwX -m u:{{ symfony2_owner }}:rwX {{ symfony2_release_root }}/app/cache {{ symfony2_shared_root }}/app/logs &&
-    setfacl -dR -m u:{{ symfony2_group }}:rwX -m u:{{ symfony2_owner }}:rwX {{ symfony2_release_root }}/app/cache {{ symfony2_shared_root }}/app/logs
+    setfacl -R -m u:{{ symfony2_group }}:rwX -m u:{{ symfony2_owner }}:rwX {{ symfony2_release_root }}/{{ symfony2_cache_dir }} {{ symfony2_shared_root }}/{{ symfony2_logs_dir }} &&
+    setfacl -dR -m u:{{ symfony2_group }}:rwX -m u:{{ symfony2_owner }}:rwX {{ symfony2_release_root }}/{{ symfony2_cache_dir }} {{ symfony2_shared_root }}/{{ symfony2_logs_dir }}
   when: "'setfacl' == symfony2_ownership"
