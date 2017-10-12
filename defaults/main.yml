@@ -150,6 +150,10 @@ symfony2_composer_path: ''
 symfony2_composer_options: "--no-interaction"
 
 
+# Console
+symfony2_console_path: app/console
+
+
 # php app/console options
 symfony2_console_options: "--no-interaction"
 

@@ -51,6 +51,15 @@ ansible-galaxy install igor_mukhin.symfony2
 Will install your application to /var/www/project/releases/20150114_074000/
 (if you run that at 2015-01-14 7:40).
 
+### Using role with Symfony 2.8+
+
+To use role with Symfony 2.8+ we should specify valid 
+path to `console`:
+
+```yaml
+symfony2_console_path: bin/console
+```
+
 ## Warning
 
 This role is under development right now. Some features not well tested, so may not work. Some minor releases may break BC until version 1 released.
