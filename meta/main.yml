@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: igor.mukhin@gmail.com
-  description:
+  description: Ansible role to deploy Symfony2 applications. Symfony 3 and Ansible 2 compatible.
   license: MIT
   min_ansible_version: 1.5.3 # Due to https://groups.google.com/forum/#!msg/ansible-project/e8uuDIhhBpo/YWEsoKxA6gsJ
 
@@ -90,7 +90,7 @@ galaxy_info:
 
   # Below are all categories currently available. Just as with
   # the platforms above, uncomment those that apply to your role.
-  categories:
+  galaxy_tags:
   #- cloud
   #- cloud:ec2
   #- cloud:gce
