@@ -1,5 +1,18 @@
 ---
 
+# Packages
+# 0. No packages
+symfony2_packages_keys: []
+symfony2_packages_repositories: []
+symfony2_packages: []
+# 1. Example: Install yarn
+# symfony2_packages_keys:
+#   - https://dl.yarnpkg.com/debian/pubkey.gpg
+# symfony2_packages_repositories:
+#   - "deb https://dl.yarnpkg.com/debian/ stable main"
+# symfony2_packages:
+#   - yarn
+
 # Ownership strategies:
 # 0. Do nothing
 # Note that there are not allowed to use `app/console` from bash as non-`symfony2_owner` user.

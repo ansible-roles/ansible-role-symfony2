@@ -1,0 +1,18 @@
+---
+
+- name: Symfony2 | Packages | Configure the APT keys
+  apt_key:
+    url: "{{ item }}"
+  with_items: "{{ symfony2_packages_keys }}"
+
+- name: Symfony2 | Packages | Add repositories
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+  with_items: "{{ symfony2_packages_repositories }}"
+
+- name: Symfony2 | Packages | Install packages
+  apt:
+    pkg: "{{ item }}"
+    state: present
+  with_items: "{{ symfony2_packages }}"

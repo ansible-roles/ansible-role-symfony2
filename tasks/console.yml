@@ -1,7 +1,13 @@
 ---
 
+- name: Symfony2 | Console | Run raw comands
+  shell: >
+    cd {{ symfony2_release_root }} && {{ item.command|default(item) }} {{ item.options|default('') }}
+  with_items: "{{ symfony2_console_commands }}"
+  when: symfony2_console_commands != false and item.raw|default(false)
+
 - name: Symfony2 | Console | Run comands
   shell: >
     cd {{ symfony2_release_root }} && {{ symfony2_php_path }} {{ symfony2_console_path }} {{ item.command|default(item) }} --env={{ symfony2_environment }} {{ symfony2_console_options }} {{ item.options|default('') }}
   with_items: "{{ symfony2_console_commands }}"
-  when: symfony2_console_commands != false
+  when: symfony2_console_commands != false and not item.raw|default(false)
