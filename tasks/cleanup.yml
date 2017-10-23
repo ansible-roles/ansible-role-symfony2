@@ -12,4 +12,4 @@
   file:
     path: "{{ symfony2_root }}/releases/{{ item }}"
     state: absent
-  with_items: _symfony2_old_releases.stdout_lines
+  with_items: "{{ _symfony2_old_releases.stdout_lines }}"

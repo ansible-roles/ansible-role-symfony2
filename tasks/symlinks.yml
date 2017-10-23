@@ -3,35 +3,35 @@
 - name: Symfony2 | Symlinks | Collect stats from root directories
   stat:
     path: "{{ symfony2_release_root }}/{{ item }}"
-  with_items: symfony2_shared_dirs
+  with_items: "{{ symfony2_shared_dirs }}"
   register: symfony2_release_root_stat
 
 - name: Symfony2 | Symlinks | Collect stats from shared directories
   stat:
     path: "{{ symfony2_shared_root }}/{{ item }}"
-  with_items: symfony2_shared_dirs
+  with_items: "{{ symfony2_shared_dirs }}"
   register: symfony2_shared_root_stat
 
 - name: Symfony2 | Symlinks | Create shared directories
   file:
     state: directory
     path: "{{ symfony2_shared_root }}/{{ item }}"
-  with_items: symfony2_shared_dirs
+  with_items: "{{ symfony2_shared_dirs }}"
 
 - name: Symfony2 | Symlinks | Move directories to shared from root if it exists on root, but not exists on shared
   command: >
     mv "{{ symfony2_release_root }}/{{ item.0 }}" "{{ symfony2_shared_root }}/{{ item.0 }}/../"
   with_together:
-    - symfony2_shared_dirs
-    - symfony2_release_root_stat.results
-    - symfony2_shared_root_stat.results
+    - "{{ symfony2_shared_dirs }}"
+    - "{{ symfony2_release_root_stat.results }}"
+    - "{{ symfony2_shared_root_stat.results }}"
   when: item.1.stat.exists and not item.1.stat.islnk and not item.2.stat.exists
 
 - name: Symfony2 | Symlinks | Remove root folders - it should be links to shared directory
   file:
     state: absent
     path: "{{ symfony2_release_root }}/{{ item }}"
-  with_items: symfony2_shared_dirs
+  with_items: "{{ symfony2_shared_dirs }}"
 
 - name: Symfony2 | Symlinks | Create shared symlinks
   file:
@@ -39,7 +39,7 @@
     force: yes
     src: "{{ symfony2_shared_root }}/{{ item }}"
     dest: "{{ symfony2_release_root }}/{{ item }}"
-  with_items: symfony2_shared_dirs
+  with_items: "{{ symfony2_shared_dirs }}"
 
 - name: Symfony2 | Symlinks | Remove link to old application code
   file:
