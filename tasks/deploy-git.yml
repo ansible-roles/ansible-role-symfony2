@@ -8,5 +8,6 @@
     force: yes
     depth: "{{ symfony2_repo_depth }}"
     key_file: "{{ symfony2_key_file }}"
-  ignore_errors: true
+    accept_hostkey: "{{ symfony2_repo_accept_hostkey }}"
+  ignore_errors: "{{ symfony2_repo_ignore_errors }}"
   register: symfony2_deployed

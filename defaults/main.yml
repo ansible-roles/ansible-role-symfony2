@@ -95,6 +95,8 @@ symfony2_branch: master
 symfony2_repo: https://github.com/symfony/symfony-standard.git
 symfony2_repo_depth: 1
 symfony2_key_file: '~/.ssh/id_rsa'
+symfony2_repo_ignore_errors: false
+symfony2_repo_accept_hostkey: true
 
 # 2. Mercurial strategy
 # symfony2_deploy_strategy: mercurial
